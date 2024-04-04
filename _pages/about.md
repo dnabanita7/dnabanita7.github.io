@@ -2,14 +2,12 @@
 layout: about
 title: about
 permalink: /
-subtitle: # <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: # <a href='#'>Affiliations</a>. Contacts. Moto. Etc.
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: true # crops the image to make it circular
-  address: >
-        <p>Montreal, QC</p>
 
 news: true  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
