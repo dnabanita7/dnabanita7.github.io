@@ -15,11 +15,11 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-As an independent researcher, my focus lies within the realms of SLAM (Simultaneous Localization and Mapping), 3D Reconstruction, 3D Scene Understanding, and SIM2REAL applications within the field of quadruped robots.
+As an independent researcher, my focus lies within the realms of **SLAM (Simultaneous Localization and Mapping), 3D Reconstruction, 3D Scene Understanding, and SIM2REAL** applications within the field of **quadruped robots**.
 
-I have a passion for sharing knowledge and insights, which is why I regularly craft blog posts aimed at elucidating complex topics and making them accessible to a wider audience. Through my writing, I strive to demystify concepts and foster understanding. You can find my blog posts covering a range of subjects on platforms like LinkedIn, where I delve into my areas of interest including reinforcement learning, large language models, photogrammetry, and differential privacy. Feel free to explore and engage with my content as I continue to contribute to the discourse.
+I have a passion for sharing knowledge and insights, which is why I regularly craft blog posts aimed at elucidating complex topics and making them accessible to a wider audience. Through my writing, I strive to demystify concepts and foster understanding. You can find my blog posts covering a range of subjects on platforms like **LinkedIn**, where I delve into my areas of interest including **reinforcement learning, large language models, photogrammetry, and differential privacy**. Feel free to explore and engage with my content as I continue to contribute to the discourse.
 
-I welcome discussions on potential collaborations and am open to exploring new ideas. If you're interested in collaborating with me, please feel free to reach out via email or discord.
+I welcome discussions on potential collaborations and am open to exploring new ideas. If you're interested in collaborating with me, please feel free to reach out via email or discord!
 
 <!--
 Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.test
