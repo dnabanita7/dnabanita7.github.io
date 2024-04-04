@@ -17,14 +17,11 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Hi! I am currently a fifth-year Ph.D. student at MIT majoring in Electrical Engineering and Computer Science.
-My research focuses on machine learning and developing robust and efficient algorithms driven by clinical problems.
-Applications include motion-robust 3D rendering of the human brain, real-time quality assessment in MR scans as well as pose estimation and motion characterization of fetuses.
-I am advised by Prof. [Elfar Adalsteinsson](https://www.rle.mit.edu/people/directory/elfar-adalsteinsson/) and collaborate closely with Prof. [Polina Golland](https://people.csail.mit.edu/polina/) and Prof. [P. Ellen Grant](https://scholar.google.com/citations?user=W4dqZ7EAAAAJ).
+As an independent researcher, my focus lies within the realms of SLAM (Simultaneous Localization and Mapping), 3D Reconstruction, 3D Scene Understanding, and SIM2REAL applications within the field of quadruped robots.
 
-I also did summer internships at Google and Meta, working on automated Ads bidding and large-scale video recommendation systems respectively.
+I have a passion for sharing knowledge and insights, which is why I regularly craft blog posts aimed at elucidating complex topics and making them accessible to a wider audience. Through my writing, I strive to demystify concepts and foster understanding. You can find my blog posts covering a range of subjects on platforms like LinkedIn, where I delve into my areas of interest including reinforcement learning, large language models, photogrammetry, and differential privacy. Feel free to explore and engage with my content as I continue to contribute to the discourse.
 
-Prior to MIT, I received my Bachelor's degree from Tsinghua University in 2018. I also spent a summer as a research assistant at Stanford, where I was advised by Prof. [John Pauly](https://web.stanford.edu/~pauly/) and Prof. [Greg Zaharchuk](https://profiles.stanford.edu/greg-zaharchuk).
+I welcome discussions on potential collaborations and am open to exploring new ideas. If you're interested in collaborating with me, please feel free to reach out via email or discord.
 
 <!--
 Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.test
