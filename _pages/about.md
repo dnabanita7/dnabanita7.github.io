@@ -20,7 +20,7 @@ As an independent researcher, my primary interests encompasses **SLAM (Simultane
 I have a passion for sharing knowledge and insights, which is why I regularly craft blog posts aimed at elucidating complex topics and making them accessible to a wider audience. Through my writing, I strive to demystify concepts and foster understanding. You can find my blog posts covering a range of subjects on platforms like **LinkedIn**, where I delve into my areas of interest including **reinforcement learning, large language models, photogrammetry, and differential privacy**. Feel free to explore and engage with my content as I continue to contribute to the discourse.
 
 Collaborations
-====
+========
 I welcome discussions on potential collaborations and am open to exploring new ideas. If you're interested in collaborating with me, please feel free to reach out via **email** or **discord**!
 
 <!--
