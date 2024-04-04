@@ -141,7 +141,35 @@
 <li>
 <!-- _layouts/bib.html -->
 <div class="row">
-  <div class="col-sm-2 abbr"></div>
+  <div class="col-sm-2 preview">
+<img id="mybookpng" class="preview z-depth-1 rounded myImg" src="/assets/img/publication_preview/mybook.png"><div id="mybookpng-modal" class="modal2">
+      <span class="closeimg" onclick="document.getElementById('mybookpng-modal').style.display='none'">×</span>
+      <div class="myCaption"></div>
+      <img class="modal-content2" id="mybookpng-modal-img">
+    </div>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("mybookpng-modal");
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img = document.getElementById('mybookpng');
+      var modalImg = document.getElementById("mybookpng-modal-img");
+      var captionText = modal.getElementsByTagName('div')[0];
+      img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = "";
+      }
+      // Get the <span> element that closes the modal
+      var span = modal.getElementsByTagName('span')[0];
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      }
+      modal.onclick = function () {
+        modal.style.display = "none";
+      }
+    </script>
+</div>
 
   <!-- Entry bib key -->
   <div id="dash2024ultimate" class="col-sm-8 col-md-9">
@@ -178,7 +206,35 @@
 <li>
 <!-- _layouts/bib.html -->
 <div class="row">
-  <div class="col-sm-2 abbr"></div>
+  <div class="col-sm-2 preview">
+<img id="3dgraphpng" class="preview z-depth-1 rounded myImg" src="/assets/img/publication_preview/3dgraph.png"><div id="3dgraphpng-modal" class="modal2">
+      <span class="closeimg" onclick="document.getElementById('3dgraphpng-modal').style.display='none'">×</span>
+      <div class="myCaption"></div>
+      <img class="modal-content2" id="3dgraphpng-modal-img">
+    </div>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("3dgraphpng-modal");
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img = document.getElementById('3dgraphpng');
+      var modalImg = document.getElementById("3dgraphpng-modal-img");
+      var captionText = modal.getElementsByTagName('div')[0];
+      img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = "";
+      }
+      // Get the <span> element that closes the modal
+      var span = modal.getElementsByTagName('span')[0];
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      }
+      modal.onclick = function () {
+        modal.style.display = "none";
+      }
+    </script>
+</div>
 
   <!-- Entry bib key -->
   <div id="anonymous2024re" class="col-sm-8 col-md-9">
@@ -272,7 +328,7 @@
     <!-- Links/Buttons -->
     <div class="links">
       <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
-      <a href="https://www.researchgate.net/publication/379034606_Seminar_Report" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">URL</a>
+      <a href="http://dx.doi.org/10.13140/RG.2.2.13516.01928" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">URL</a>
       <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
     </div>
     
@@ -290,7 +346,7 @@
   <span class="na">author</span> <span class="p">=</span> <span class="s">{Dash, Nabanita and Pandya, Priya}</span><span class="p">,</span>
   <span class="na">year</span> <span class="p">=</span> <span class="s">{2020}</span><span class="p">,</span>
   <span class="na">organization</span> <span class="p">=</span> <span class="s">{ResearchGate, IIIT-BBSR}</span><span class="p">,</span>
-  <span class="na">url</span> <span class="p">=</span> <span class="s">{https://www.researchgate.net/publication/379034606_Seminar_Report}</span>
+  <span class="na">url</span> <span class="p">=</span> <span class="s">{http://dx.doi.org/10.13140/RG.2.2.13516.01928}</span>
 <span class="p">}</span></code></pre></figure>
     </div>
   </div>
