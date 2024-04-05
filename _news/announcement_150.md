@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2023-01-09 07:59:00-0400
+date: 2021-06-15
 inline: true
 ---
 
-Our paper entitled "NeSVoR: Implicit Neural Representation for Slice-to-Volume Reconstruction in MRI" was accepted by IEEE TMI!
+I graduated with Bachelor's degree majoring in Computer Science and Engineering from IIIT, BBS with a 3.8836/4.0
