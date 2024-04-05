@@ -17,6 +17,8 @@ social: true  # includes social icons at the bottom of the page
 
 As an independent researcher, my primary interests encompasses **SLAM (Simultaneous Localization and Mapping), 3D Reconstruction, 3D Scene Understanding, and SIM2REAL** applications within the field of **quadruped robots**.
 
+I was working as a R&D engineer at [Recherche Antimodular](https://antimodular.com/) and as a developer at [JuliaHub](https://juliahub.com/).
+
 I have a passion for sharing knowledge and insights, which is why I regularly craft blog posts aimed at elucidating complex topics and making them accessible to a wider audience. Through my writing, I strive to demystify concepts and foster understanding. You can find my blog posts covering a range of subjects on platforms like **LinkedIn**, where I delve into my areas of interest including **reinforcement learning, large language models, photogrammetry, and differential privacy**. Feel free to explore and engage with my content as I continue to contribute to the discourse.
 
 Collaborations
