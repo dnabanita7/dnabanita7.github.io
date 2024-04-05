@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2023-04-19 07:59:00-0400
+date: 2022-12-05
 inline: true
 ---
 
-I successfully defended my doctoral thesis today!
+I have started working as a research engineer at Recherche Antimodular.
