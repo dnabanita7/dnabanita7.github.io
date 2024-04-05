@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://dnabanita7.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dnabanita7.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-04-05T02:50:56+00:00</updated><id>https://dnabanita7.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://dnabanita7.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dnabanita7.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-04-05T02:53:04+00:00</updated><id>https://dnabanita7.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry><title type="html">Whisper: Web-Scale Supervised Pretraining for Speech Recognition</title><link href="https://dnabanita7.github.io/blog/2022/Whisper/" rel="alternate" type="text/html" title="Whisper: Web-Scale Supervised Pretraining for Speech Recognition" /><published>2022-09-21T00:00:00+00:00</published><updated>2022-09-21T00:00:00+00:00</updated><id>https://dnabanita7.github.io/blog/2022/Whisper</id><content type="html" xml:base="https://dnabanita7.github.io/blog/2022/Whisper/"><![CDATA[<h2 id="takeaways">Takeaways</h2>
 
 <ul>
@@ -757,358 +757,7 @@
   <li>While LDMs significantly reduce computational requirements compared to pixel-based approaches, their sequential sampling process is still slower than that
 of GANs.</li>
   <li>The use of LDMs can be questionable when high precision is required.</li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[High-Resolution Image Synthesis with Latent Diffusion Models]]></summary></entry><entry><title type="html">InstructGPT</title><link href="https://dnabanita7.github.io/blog/2022/InstructGPT/" rel="alternate" type="text/html" title="InstructGPT" /><published>2022-01-27T00:00:00+00:00</published><updated>2022-01-27T00:00:00+00:00</updated><id>https://dnabanita7.github.io/blog/2022/InstructGPT</id><content type="html" xml:base="https://dnabanita7.github.io/blog/2022/InstructGPT/"><![CDATA[<h2 id="takeaways">Takeaways</h2>
-
-<ul>
-  <li>Making LMs bigger does not inherently make them better at following a user’s intent.</li>
-  <li>Reinforcement learning from human feedback (<strong>RLHF</strong>) is a promising direction for aligning LM with user intent.</li>
-  <li>Outputs from the 1.3B InstructGPT model are preferred by humans to outputs from the 175B GPT-3, despite having 100x fewer parameters.</li>
-  <li>InstructGPT shows improvements in truthfulness and reductions in toxic output generation while having minimal performance regressions on public NLP datasets.</li>
-</ul>
-
-<h2 id="introduction">Introduction</h2>
-
-<p>Making LMs bigger does not inherently make them better at following a user’s intent, i.e., not <em>aligned</em> with their users.</p>
-
-<p>The model may generate outputs that are untruthful, toxic, or not helpful.</p>
-
-<p>This is because the LM objective used for many recent large LMs, i.e., predicting the next token on a webpage from the internet, is different from the objective “follow the user’s instructions helpfully and safely”.</p>
-
-<p>Ideas:</p>
-
-<ul>
-  <li>Aligning language models with user intent on a wide range of tasks by fine-tuning with human feedback.</li>
-  <li>Use reinforcement learning from human feedback (<strong>RLHF</strong>) to fine-tune GPT-3<d-cite key="GPT-3"></d-cite> to follow a broad class of written instructions.</li>
-  <li>This technique uses human preferences as a reward signal to fine-tune the models.</li>
-</ul>
-
-<p>Main Findings:</p>
-
-<ul>
-  <li>Labelers significantly prefer InstructGPT outputs over outputs from GPT-3</li>
-  <li>InstructGPT generalizes to the preferences of “held-out” labelers.</li>
-  <li>Public NLP datasets are not reflective of how our language models are used.</li>
-  <li>InstructGPT models show improvements in truthfulness over GPT-3.</li>
-  <li>InstructGPT shows small improvements in toxicity over GPT-3, but not bias.</li>
-  <li>The performance regressions on public NLP datasets can be minimized by modifying the RLHF fine-tuning procedure.</li>
-  <li>InstructGPT shows promising generalization to instructions outside of the RLHF finetuning distribution.</li>
-  <li>InstructGPT still makes simple mistakes.</li>
-</ul>
-
-<h2 id="methods">Methods</h2>
-
-<h3 id="high-level-methodology">High-Level Methodology</h3>
-
-<ol>
-  <li>Collect demonstration data, and train a supervised policy (supervised fine-tune, <strong>SFT</strong>).</li>
-  <li>Collect comparison data, and train a reward model (<strong>RM</strong>).</li>
-  <li>Optimize a policy against the reward model using <strong>PPO</strong>.</li>
-</ol>
-
-<p>Steps 2 and 3 can be iterated continuously.</p>
-
-<div class="l-page" style="text-align:center;">
-  <img src="https://cdn.openai.com/instruction-following/draft-20220126f/methods.svg" width="100%" style="margin-bottom: 12px; background-color: white;" />
-  <p></p>
-</div>
-
-<h3 id="dataset">Dataset</h3>
-
-<h4 id="prompt-dataset">Prompt Dataset</h4>
-
-<ul>
-  <li>Use text prompts submitted to the OpenAI API, specifically those using <em>an earlier version of the InstructGPT models</em>.</li>
-  <li>Deduplicate prompts by checking for prompts that share a long common prefix.</li>
-  <li>Limit the number of prompts to 200 per user ID.</li>
-  <li>Create the train, validation, and test splits based on <em>user ID</em>.</li>
-  <li>Filter all prompts in the training split for personally identifiable information.</li>
-</ul>
-
-<p>For each prompt, the task can be</p>
-
-<ul>
-  <li>a natural language instruction (e.g. “Write a story about a wise frog”),</li>
-  <li>few-shot examples (e.g. giving two examples of frog stories, and prompting the model to generate a new one)</li>
-  <li>an implicit continuation (e.g. providing the start of a story about a frog).</li>
-</ul>
-
-<h4 id="train-the-very-first-instructgpt">Train the Very First InstructGPT</h4>
-
-<p>To train the very first InstructGPT models, the authors asked labelers to <em>write prompts themselves</em>. This is because an initial source of instruction-like prompts is needed to bootstrap the process and these kinds of prompts weren’t often submitted to the regular GPT-3 models on the API.</p>
-
-<p>Three kinds of prompts were written by the labelers:</p>
-<ul>
-  <li>Plain: an arbitrary task, while ensuring the tasks had sufficient diversity.</li>
-  <li>Few-shot: an instruction, and multiple query/response pairs for that instruction.</li>
-  <li>User-based: a prompt corresponding to the use cases stated in waitlist applications to the OpenAI API.</li>
-</ul>
-
-<h4 id="datasets-for-fine-tuning">Datasets for Fine-Tuning</h4>
-
-<p>Three different datasets used in the fine-tuning procedure are built from the prompt dataset.</p>
-
-<ol>
-  <li><strong>SFT:</strong> A prompt is sampled from the prompt dataset, and a labeler writes an answer to this prompt, supervised learning (13k prompts)</li>
-  <li><strong>RM:</strong> A prompt and several model outputs are sampled, and a labeler ranks the outputs from the best to worst. This data is used to train the reward model. (33k prompts)</li>
-  <li><strong>PPO:</strong> Another prompt dataset from the API. This data is used to train PPO with the RM. (31k prompts)</li>
-</ol>
-
-<h4 id="human-data-collection">Human Data Collection</h4>
-
-<p>Hired a team of about 40 labelers.</p>
-
-<p>During training and evaluation, the alignment criteria may come into conflict.</p>
-
-<ul>
-  <li>During training helpfulness to the user is prioritized</li>
-  <li>In the final evaluation truthfulness and harmlessness are prioritized.</li>
-</ul>
-
-<h3 id="models">Models</h3>
-
-<h4 id="sft">SFT</h4>
-
-<ul>
-  <li>Fine-tune GPT-3 on the labeler demonstrations using supervised learning.</li>
-  <li>Select the final SFT model based on the RM score on the validation set.</li>
-</ul>
-
-<h4 id="rm">RM</h4>
-
-<ul>
-  <li>Start from the SFT model with the final unembedding layer removed.</li>
-  <li>Train a model to take in a prompt and response, and output a scalar reward.</li>
-</ul>
-
-<p>Model size: The 6B RMs are used because they save computation and the training of 175B RM could be unstable.</p>
-
-<p>Loss function:</p>
-
-\[L(\theta)=-\frac{1}{K \choose 2}\mathbb{E}_{(x,y_w,y_l)\sim D}[\log(\sigma(r_\theta(x,y_w)- r_\theta(x,y_l)))],\]
-
-<p>where \(r_\theta(x,y)\) is the score outputed by the RM for prompt \(x\) and completion \(y\) with parameters \(\theta\), \(y_w\) is the preferred completion out of the pair of \(y_w\) and \(y_l\), and \(D\) is the dataset of human comparisons.</p>
-
-<h4 id="rl">RL</h4>
-
-<p>Fine-tune the SFT model using PPO.</p>
-
-<p>The environment is a bandit environment that presents a random customer prompt and expects a response to the prompt. Given the prompt and response, it produces a reward determined by the reward model and ends the episode.</p>
-
-<p>In addition, a per-token KL penalty from the SFT model is added at each token to mitigate overoptimization of the reward model.</p>
-
-<p>The value function is initialized from the RM.</p>
-
-<p>An improved algorithm: <strong>PPO-ptx</strong></p>
-
-<ul>
-  <li>Mixing the pretraining gradients into the PPO gradients.</li>
-  <li>
-    <p>Maximize the following combined objective function in RL training</p>
-
-\[\mathbb{E}_{(x,y)\sim D_{\pi_{\phi}^\text{RL}}}[r_{\theta}(x,y)-\beta\log(\pi_\phi^\text{RL}(y|x)/\pi^\text{SFT}(y|x))]+\gamma \mathbb{E}_{x\sim D_\text{pretrain}}[\log(\pi_\phi^\text{RL}(x))],\]
-
-    <p>where \(\pi_\phi^\text{RL}\) is the learned RL policy, \(\pi^\text{SFT}\) is the supervised trained model, and \(D_\text{pretrain}\) is the pretraining distribution.</p>
-  </li>
-  <li>Falling back into PPO when \(\gamma=0\).</li>
-</ul>
-
-<h4 id="baselines">Baselines</h4>
-
-<ul>
-  <li>GPT-3</li>
-  <li>GPT-3-prompted: provide a few-shot prefix to “prompt” GPT-3 into an instruction-following mode</li>
-  <li>GPT-3-FT: fine-tune GPT-3 on a variety of NLP tasks</li>
-</ul>
-
-<h2 id="experiments">Experiments</h2>
-
-<h3 id="evaluation">Evaluation</h3>
-
-<h4 id="definition-of-alignment">Definition of Alignment</h4>
-
-<ul>
-  <li><strong>Helpfulness:</strong>
-    <ul>
-      <li>The model should follow instructions, but also infer intention from a few-shot prompt or another interpretable pattern.</li>
-      <li>The main metric is labeler preference ratings.</li>
-      <li>However, since the labelers are not the users who generated the prompts, there could be a divergence between what a user actually intended and what the labeler thought was intended from only reading the prompt.</li>
-    </ul>
-  </li>
-  <li><strong>Truthfulness (honesty):</strong>
-    <ul>
-      <li>Whether the model’s statements about the world are true.</li>
-      <li>Evaluate the model’s tendency to make up information on closed-domain tasks (“hallucinations”)</li>
-      <li>Use the TruthfulQA dataset.</li>
-    </ul>
-  </li>
-  <li><strong>Harmlessness:</strong>
-    <ul>
-      <li>The harms from language models depend on how their outputs are used in the real world.</li>
-      <li>The labelers evaluate whether the output is inappropriate in the context of a customer assistant, denigrates a protected class, or contains.</li>
-      <li>Benchmark the models on datasets intended to measure bias and toxicity.</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="evaluations-on-api-distribution">Evaluations on API Distribution</h4>
-
-<p>The main metric is <em>human preference ratings</em> on a held-out set of prompts from the same source as the training distribution.</p>
-
-<ul>
-  <li>How often the model’s outputs are preferred to a baseline policy (175B SFT model)?</li>
-  <li>The overall quality of each response on a 1-7 Likert scale (given by the labelers).</li>
-</ul>
-
-<h4 id="evaluations-on-public-nlp-datasets">Evaluations on Public NLP Datasets</h4>
-
-<ul>
-  <li>Datasets that capture an aspect of LM safety, particularly truthfulness, toxicity, and bias.</li>
-  <li>Datasets that capture zero-shot performance on traditional NLP tasks, e.g.,
-    <ul>
-      <li>question answering,</li>
-      <li>reading comprehension,</li>
-      <li>summarization.</li>
-    </ul>
-  </li>
-  <li>The RealToxicityPrompts dataset for human evaluations of toxicity.</li>
-</ul>
-
-<h3 id="results-on-the-api-distribution">Results on the API Distribution</h3>
-
-<ul>
-  <li><strong>Labelers significantly prefer InstructGPT outputs over outputs from GPT-3.</strong>
-    <ul>
-      <li>Preference order: PPO-ptx ~ PPO &gt; SFT &gt; GPT-3 (prompted) &gt; GPT-3</li>
-      <li>Outputs from the 1.3B InstructGPT are preferred to outputs from the 175B GPT-3, despite having 100x fewer parameters.</li>
-      <li>Results do not change significantly when evaluated on prompts submitted to GPT-3 models on the API.</li>
-      <li>InstructGPT outperforms GPT along several more concrete axes:
-        <ol>
-          <li>“Attempts correct instruction”</li>
-          <li>“Follows explicit constraints”</li>
-          <li>“Hallucinations”: making up facts</li>
-          <li>“Uses language appropriate for customer assistant”</li>
-        </ol>
-      </li>
-    </ul>
-  </li>
-  <li><strong>InstructGPT generalizes to the preferences of “held-out” labelers.</strong>
-    <ul>
-      <li>Held-out labelers (who did not produce any training data) have similar ranking preferences as workers who produce training data.</li>
-    </ul>
-  </li>
-  <li><strong>Public NLP datasets are not reflective of how our language models are used.</strong>
-    <ul>
-      <li>Fine-tune GPT-3 on a variety of NLP tasks (GPT-3-FT)</li>
-      <li>Likert scores ranking: PPO-ptx &gt; SFT &gt; GPT-3 (prompted) ~ GPT-3-FT &gt; GPT-3</li>
-      <li>InstructGPT model outperforms GPT-3-FT for two reasons.
-        <ol>
-          <li>Public NLP datasets are designed to capture tasks that are easy to evaluate with automatic metrics, whereas more than half of the prompts in the API distribution are open-ended generation and brainstorming.</li>
-          <li>It can be difficult for public NLP datasets to obtain a very high diversity of inputs.</li>
-        </ol>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="results-on-public-nlp-datasets">Results on Public NLP Datasets</h3>
-
-<ul>
-  <li><strong>InstructGPT models show improvements in truthfulness over GPT-3.</strong>
-    <ul>
-      <li>InstructGPT generates truthful and informative answers more often than GPT-3.</li>
-      <li>InstructGPT does not have to be specifically instructed to tell the truth to exhibit improved truthfulness.</li>
-      <li>InstructGPT hallucinate (i.e. fabricate information) less often than GPT-3 on closed-domain tasks from our API distribution.</li>
-    </ul>
-  </li>
-  <li><strong>InstructGPT shows small improvements in toxicity over GPT-3, but not bias.</strong>
-    <ul>
-      <li>Obtain automatic toxicity scores of models outputs using  <a href="https://www.perspectiveapi.com">the Perspective API</a></li>
-      <li>Human evaluation: absolute toxicity, toxicity relative to the prompt, continuity, and overall output preference.</li>
-      <li>When instructed to produce a safe and respectful output, InstructGPT models generate less toxic outputs than those from GPT-3. This advantage disappears when the respectful prompt is removed.</li>
-      <li>When explicitly prompted to produce a toxic output, InstructGPT outputs are much more toxic than those from GPT-3.</li>
-      <li>In terms of the propensity to generate biased speech, InstructGPT is <em>not</em> less biased than GPT-3. But when instructed to act respectfully InstructGPT exhibits higher bias.</li>
-    </ul>
-  </li>
-  <li><strong>The performance regressions on public NLP datasets can be minimized by modifying the RLHF fine-tuning procedure.</strong>
-    <ul>
-      <li>InstructGPT (PPO model trained on the API distribution) suffers from performance regressions on several public NLP datasets (alignment tax).</li>
-      <li>Adding pretraining updates (PPO-ptx) mitigates these performance regressions on all datasets.</li>
-      <li>Mixing in pretraining updates performs better than the simpler solution of increasing the KL coefficient.</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="qualitative-results">Qualitative results</h3>
-
-<ul>
-  <li><strong>InstructGPT shows promising generalization to instructions outside of the RLHF finetuning distribution.</strong>
-    <ul>
-      <li>InstructGPT shows the ability to follow instructions in non-English languages, and perform summarization and question-answering for code, although non-English languages and code form a tiny minority of the fine-tuning data.</li>
-    </ul>
-  </li>
-  <li><strong>InstructGPT still makes simple mistakes.</strong>
-    <ul>
-      <li>When given an instruction with a false premise, the model sometimes incorrectly assumes the premise is true.</li>
-      <li>The model can overly hedge; when given a simple question, it can sometimes say that there is no one answer to the question and give multiple possible answers, even when there is one fairly clear answer from the context.</li>
-      <li>The model’s performance degrades when instructions contain multiple explicit constraints or when constraints can be challenging for language models.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="discussion">Discussion</h2>
-
-<h3 id="implications-for-alignment-research">Implications for Alignment Research</h3>
-
-<p>This research is part of a broader research program to align AI systems with human intentions.</p>
-
-<p>Lessons for alignment research more generally:</p>
-
-<ul>
-  <li>The cost of increasing model alignment is modest relative to pretraining.</li>
-  <li>There is some evidence that InstructGPT generalizes “following instructions” to settings that people don’t supervise it in.</li>
-  <li>Most of the performance degradations introduced by the fine-tuning can be mitigated.</li>
-  <li>This work has validated alignment techniques from research in the real world.</li>
-</ul>
-
-<h3 id="who-are-we-aligning-to">Who are We Aligning to?</h3>
-
-<p>Factors that influence the fine-tuning data that ultimately determine what and who the models are aligning to.</p>
-
-<ul>
-  <li>Aligning to demonstrations and preferences provided by our training labelers.</li>
-  <li>Aligning to the preferences of the researchers who designed this study.</li>
-  <li>Aligning to what customers think is valuable and what their end-users think is valuable to currently use the API for.</li>
-</ul>
-
-<h3 id="limitations">Limitations</h3>
-
-<h4 id="limitations-of-methodology">Limitations of Methodology</h4>
-
-<ul>
-  <li>The behavior of InstructGPT models is determined in part by the human feedback obtained from the labelers.</li>
-  <li>Some of the labeling tasks rely on value judgments that may be impacted by the identity of the labelers.</li>
-  <li>Most comparisons are only labeled by 1 labeler for cost reasons.</li>
-</ul>
-
-<h4 id="limitations-of-models">Limitations of Models</h4>
-
-<ul>
-  <li>The models are neither fully aligned nor fully safe: still generate toxic or biased outputs, make up facts, and generate sexual and violent content without explicit prompting.</li>
-  <li>The model also fails to generate reasonable outputs on some inputs.</li>
-  <li>In most cases, the model follows the user’s instruction, even if that could lead to harm in the real world.</li>
-</ul>
-
-<h3 id="open-questions">Open Questions</h3>
-
-<ul>
-  <li>Further decrease the models’ propensity to generate toxic, biased, or otherwise harmful outputs.</li>
-  <li>Training the model to be harmless despite user instructions is important but is also difficult because whether an output is harmful depends on the context in which it’s deployed.</li>
-  <li>A promising future path is combining RLHF with other methods of steerability.</li>
-  <li>In addition to RLHF, there are many other algorithms that could be used to train policies on the demonstration and comparison data to get even better results.</li>
-  <li>Comparisons are not necessarily the most efficient way of providing an alignment signal.</li>
-  <li>The proposal for mitigating the alignment tax, by incorporating pretraining data into RLHF finetuning (PPO-ptx), does not completely mitigate performance regressions and may make certain undesirable behaviors more likely for some tasks.</li>
-  <li>A principle-based approach to alignment, i,e, identifying “fair principles” for alignment.</li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[Training language models to follow instructions with human feedback]]></summary></entry><entry><title type="html">CLIP: Contrastive Language-Image Pre-training</title><link href="https://dnabanita7.github.io/blog/2021/CLIP/" rel="alternate" type="text/html" title="CLIP: Contrastive Language-Image Pre-training" /><published>2021-02-26T00:00:00+00:00</published><updated>2021-02-26T00:00:00+00:00</updated><id>https://dnabanita7.github.io/blog/2021/CLIP</id><content type="html" xml:base="https://dnabanita7.github.io/blog/2021/CLIP/"><![CDATA[<h2 id="takeaways">Takeaways</h2>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[High-Resolution Image Synthesis with Latent Diffusion Models]]></summary></entry><entry><title type="html">CLIP: Contrastive Language-Image Pre-training</title><link href="https://dnabanita7.github.io/blog/2021/CLIP/" rel="alternate" type="text/html" title="CLIP: Contrastive Language-Image Pre-training" /><published>2021-02-26T00:00:00+00:00</published><updated>2021-02-26T00:00:00+00:00</updated><id>https://dnabanita7.github.io/blog/2021/CLIP</id><content type="html" xml:base="https://dnabanita7.github.io/blog/2021/CLIP/"><![CDATA[<h2 id="takeaways">Takeaways</h2>
 
 <ul>
   <li>CLIP consists of an image encoder (ResNet or ViT) and a text encoder (Transformer).</li>
@@ -2987,4 +2636,96 @@ transformations for fine-tuning on different tasks.</p>
 
 <p>Evaluate the <em>zero-shot</em> performance over the course of pre-training.</p>
 
-<p>The zero-shot performance is stable and steadily increases over training suggesting that generative pretraining supports the learning of a wide variety of task-relevant functionality. Also, the LSTM exhibits higher variance in its zero-shot performance suggesting that the inductive bias of the Transformer architecture assists in transfer.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Improving Language Understanding by Generative Pre-Training]]></summary></entry></feed>
+<p>The zero-shot performance is stable and steadily increases over training suggesting that generative pretraining supports the learning of a wide variety of task-relevant functionality. Also, the LSTM exhibits higher variance in its zero-shot performance suggesting that the inductive bias of the Transformer architecture assists in transfer.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Improving Language Understanding by Generative Pre-Training]]></summary></entry><entry><title type="html">Gumbel-Softmax</title><link href="https://dnabanita7.github.io/blog/2017/Gumbel-Softmax/" rel="alternate" type="text/html" title="Gumbel-Softmax" /><published>2017-08-05T00:00:00+00:00</published><updated>2017-08-05T00:00:00+00:00</updated><id>https://dnabanita7.github.io/blog/2017/Gumbel-Softmax</id><content type="html" xml:base="https://dnabanita7.github.io/blog/2017/Gumbel-Softmax/"><![CDATA[<h2 id="takeaways">Takeaways</h2>
+
+<ul>
+  <li>Categorical latent variables can not backpropagate through samples.</li>
+  <li>Replace the non-differentiable sample from a categorical distribution with a differentiable sample from a <strong>Gumbel-Softmax</strong> distribution.</li>
+  <li>The Gumbel-Softmax distribution has the essential property that it can be <strong>smoothly annealed into</strong> a categorical distribution.</li>
+</ul>
+
+<h2 id="the-gumbel-distribution">The Gumbel Distribution</h2>
+
+<p>Notation: \(X\sim\text{Gumbel}(\mu, \beta)\), where \(\mu\in\mathbb{R}\) is the location parameter and \(\beta&gt;0\) is the scale parameter.</p>
+
+<p>PDF:</p>
+
+\[f_X(x)=\frac{1}{\beta}e^{-(z+e^{-z})}, \text{ where } z=\frac{x-\mu}{\beta}.\]
+
+<p>CDF:</p>
+
+\[F_X(x)=e^{-e^{-z}}, \text{ where } z=\frac{x-\mu}{\beta}.\]
+
+<p>See <a href="https://en.wikipedia.org/wiki/Gumbel_distribution">Wiki</a> for more details.</p>
+
+<h2 id="the-gumbel-max-trick">The Gumbel-Max Trick</h2>
+
+<p>Let \(\pi=(\pi_1,\dots,\pi_k)\) be \(k\)-d nonnegative vector, where not all elements are zero, and let \(g_1,\dots,g_k\) be \(k\) iid samples from \(\text{Gumbel}(0,1)\). Then</p>
+
+\[\arg\max_i(g_i+\log\pi_i)\sim\text{Categorical}\left(\frac{\pi_j}{\sum_i\pi_i}\right)_j\]
+
+<p>Proof:</p>
+
+<p>Let \(I = \arg\max_i\{G_i + \log\pi_i\}\) and \(M = \max_i\{G_i + \log\pi_i\}\).</p>
+
+\[\begin{aligned}
+\mathbb{P}(I=i)&amp;=\mathbb{P}(G_i + \log\pi_i &lt; M, \forall j\neq i) \\
+&amp; = \int_{-\infty}^\infty f_{G_i}(m-\log\pi_i) \prod_{j\neq i} F_{G_j}(m-\log\pi_j) dm \\
+&amp; = \int_{-\infty}^\infty \exp(\log\pi_i-m-\exp(\log\pi_i-m)) \prod_{j\neq i} \exp(-\exp(\log\pi_j-m)) dm \\
+&amp; = \int_{-\infty}^\infty \exp(\log\pi_i-m)\exp(-\exp(\log\pi_i-m)) \prod_{j\neq i} \exp(-\exp(\log\pi_j-m)) dm \\
+&amp; = \int_{-\infty}^\infty \exp(\log\pi_i-m) \prod_{j} \exp(-\exp(\log\pi_j-m)) dm \\
+&amp; = \int_{-\infty}^\infty \exp(\log\pi_i-m) \exp(-\sum_{j}\exp(\log\pi_j-m)) dm \\
+&amp; = \int_{-\infty}^\infty \exp(\log\pi_i)\exp(-m) \exp(-\exp(-m)\sum_{j}\exp(\log\pi_j)) dm \\
+&amp; = \int_{-\infty}^\infty \pi_i\exp(-m) \exp(-\exp(-m)\sum_{j}\pi_j) dm \\
+&amp; = \int_{0}^\infty \pi_i \exp(-x\sum_{j}\pi_j) dx \\
+&amp; = \frac{\pi_i}{\sum_j\pi_j}
+\end{aligned}\]
+
+<h2 id="the-gumbel-softmax-distribution">The Gumbel-Softmax Distribution</h2>
+
+<p>Relax the Gumbel-Max trick by replacing argmax with softmax (continuous, differentiable) and generate \(k\)-d sample vectors</p>
+
+\[y_i = \frac{\exp((\log(\pi_i)+g_i)/\tau)}{\sum_{j=1}^k\exp((\log(\pi_j)+g_j)/\tau)}.\]
+
+<p>PDF:</p>
+
+\[f_{Y_1,\dots,Y_k}(y_1,\dots,y_k;\pi,\tau)=\Gamma(k)\tau^{k-1}\left( \sum_{i=1}^k \pi_i/y_i^\tau \right)^{-k}\prod_{i=1}^k(\pi_i/y_i^{\tau+1}).\]
+
+<ul>
+  <li>The Gumbel-Softmax distribution interpolates between discrete one-hot-encoded categorical distributions and continuous categorical densities.</li>
+  <li>For low temperatures, the expected value of a Gumbel-Softmax random variable approaches the expected value of a categorical random variable with the same logits.</li>
+  <li>As the temperature increases, the expected value converges to a uniform distribution over the categories.</li>
+  <li>Samples from GumbelSoftmax distributions are identical to samples from a categorical distribution as \(\tau\rightarrow 0\).</li>
+  <li>At higher temperatures, Gumbel-Softmax samples are no longer one-hot, and become uniform as \(\tau\rightarrow\infty\).</li>
+</ul>
+
+<h2 id="the-gumbel-softmax-estimator">The Gumbel-Softmax Estimator</h2>
+
+<p>The Gumbel-Softmax distribution is smooth for \(\tau &gt; 0\), and therefore has a well-defined gradient \(\partial y/\partial \pi\) with respect to the parameters \(\pi\). Thus, by replacing categorical samples with Gumbel-Softmax samples we can use backpropagation to compute gradients.</p>
+
+<p>Denote the procedure of replacing non-differentiable categorical samples with a differentiable approximation during training as the <strong>Gumbel-Softmax estimator</strong>.</p>
+
+<p>A tradeoff between small and large temperatures:</p>
+
+<ul>
+  <li>Small \(\tau\): Close to one-hot but the variance of the gradients is large</li>
+  <li>Large \(\tau\): Samples are smooth but the variance of the gradients is small.</li>
+</ul>
+
+<p>In practice</p>
+
+<ul>
+  <li>Start at a high temperature and anneal to a small but non-zero temperature.</li>
+  <li>Or let \(\tau\) be a trainable parameter (can be interpreted as entropy regularization).</li>
+</ul>
+
+<h2 id="the-straight-through-gumbel-softmax-estimator">The Straight-Through Gumbel-Softmax Estimator</h2>
+
+<p>For scenarios that are constrained to sampling discrete values</p>
+
+<ul>
+  <li>Discretize \(y\) using argmax.</li>
+  <li>But use the continuous approximation in the backward pass.</li>
+</ul>
+
+<p>Call this Straight-Through (ST) Gumbel-Softmax Estimator.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Categorical Reparameterization with Gumbel-Softmax]]></summary></entry></feed>
