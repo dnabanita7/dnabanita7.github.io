@@ -2,29 +2,23 @@
   type: map
   contents:
     - name: Full Name
-      value: Junshen Xu
+      value: Nabanita Dash
     #- name: Date of Birth
     #  value: 14th March 1879
     - name: Email
-      value: junshen [at] mit [dot] edu
+      value: dashnabanita [at] gmail [dot] com
     - name: Languages
-      value: English, Chinese
+      value: English, Odia, Hindi
 
 - title: Education
   type: time_table
   contents:
-    - title: Ph.D. in Electrical Engineering and Computer Science
-      institution: Massachusetts Institute of Technology
-      year: 2018 - 2023
-    - title: S.M. in Electrical Engineering and Computer Science
-      institution: Massachusetts Institute of Technology
-      year: 2018 - 2020
-      #description:
-      #  - Description 1.
-      #  - Description 2.
-    - title: B.E. in Engineering Physics
-      institution: Tsinghua University
-      year: 2014 - 2018
+    - title: B.Tech in Computer Science and Engineering
+      institution: International Institute of Information Technology, Bhubaneswar, India
+      year: 2017 - 2021
+    - title: Elementary to Senior Secondary school
+      institution: Ispat E.M. School, Rourkela, India
+      year: 2005 - 2017
       #description:
       #  - Description 1.
       #  - Description 2.
@@ -32,35 +26,24 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Research Assistant
-      institution: Massachusetts Institute of Technology
-      year: 2018 - present
+    - title: Research Engineer
+      institution: Recherche Antimodular
+      year: Dec 2022 - Jan 2024
       description:
-        - 2D-to-3D reconstruction
-        - Image quality assessment
-        - 3D pose estimation pipeline for fetal MRI
-    - title: Machine Learning Engineer Intern
-      institution: Instagram Reels Core Ranking @ Meta
-      year: May - Aug 2022
+        - Developing artworks using deep learning, computer vision, large language models by analyzing voice, text and 2D and 3D data and models by using PyTorch, Tensorflow, Huggingface, Langchain interface
+        - Developing frontend and backend applications using javascript, nodejs, express, vuejs and deploying the application by creating server side linux/linode server
+    - title: Visiting Researcher (remote work)
+      institution: Seoul National University
+      year: Jan 2021 - May 2021
       description:
-        - Mitigated short video bias in Reels
-    - title: Software Engineer Intern
-      institution: Adwords Insights Team @ Google
-      year: Jun - Aug 2021
+        - Research on smartphone forensics data using different applications
+        - Analysis and automation of the tiktok and facebook app data analysis to check for safety issues and data leaks
+    - title: Full Stack Developer
+      institution: Julia Computing Incorporation
+      year: May 2021 - Apr 2022
       description:
-        - Improved keyword classification in search ads
-        - Developed algorithms to detect the cold start of bidding strategies
-    - title: Research Scientist Intern
-      institution: United Imaging Intellignece America
-      year: Jun - Aug 2020
-      description:
-        - Multi-modal image registration with neural ODE
-        - Differentiable Digitally Reconstructed Radiograph (DRR)
-    - title: Research Assistant
-      institution: Stanford University
-      year: Jun - Aug 2017
-      description:
-        - Low dose PET reconstruction with deep learning
+        - Designed and implemented robust data management pipelines
+        - Created web frontend and backend features in JuliaHub, demonstrating versatile skills in full-stack development within the Julia ecosystem, and troubleshooting and bug fixing existing installations.
 
 # - title: Open Source Projects
 #   type: time_table
