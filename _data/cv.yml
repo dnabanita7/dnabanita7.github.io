@@ -28,7 +28,7 @@
   contents:
     - title: Research Engineer
       institution: Recherche Antimodular
-      year: Dec 2022 - Jan 2024
+      year: Dec 2022 - Jun 2024
       description:
         - Developing artworks using deep learning, computer vision, large language models by analyzing voice, text and 2D and 3D data and models by using PyTorch, Tensorflow, Huggingface, Langchain interface
         - Developing frontend and backend applications using javascript, nodejs, express, vuejs and deploying the application by creating server side linux/linode server
