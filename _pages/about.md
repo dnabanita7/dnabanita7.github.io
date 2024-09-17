@@ -15,14 +15,13 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-As an independent researcher, my primary interests encompasses **SLAM (Simultaneous Localization and Mapping), 3D Reconstruction, 3D Scene Understanding, and SIM2REAL** applications within the field of **quadruped robots**.
+I am working on task/motion planning problems under the supervision of Prof. K Madhava Krishna at RRC lab, IIIT Hyderabad, India.
 
-I was working as a R&D engineer at [Recherche Antimodular](https://antimodular.com/) and as a developer at [JuliaHub](https://juliahub.com/).
-
-I have a passion for sharing knowledge and insights, which is why I regularly craft blog posts aimed at elucidating complex topics and making them accessible to a wider audience. Through my writing, I strive to demystify concepts and foster understanding. You can find my blog posts covering a range of subjects on platforms like **LinkedIn**, where I delve into my areas of interest including **reinforcement learning, large language models, photogrammetry, and differential privacy**. Feel free to explore and engage with my content as I continue to contribute to the discourse.
+My primary interests encompasses **SLAM (Simultaneous Localization and Mapping), 3D Reconstruction, 3D Scene Understanding, and SIM2REAL** applications within the field of **quadruped robots**.
 
 Collaborations
 ========
+I delve into other areas including **reinforcement learning, large language models, photogrammetry, and differential privacy**.
 I welcome discussions on potential collaborations and am open to exploring new ideas. If you're interested in collaborating with me, please feel free to reach out via **email** or **discord**!
 
 <!--
